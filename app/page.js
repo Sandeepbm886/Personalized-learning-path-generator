@@ -1,9 +1,11 @@
-import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center justify-center px-6 sm:px-20">
       
@@ -28,7 +30,8 @@ export default function Home() {
       <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
         
         {/* Sign Up */}
-        <SignedOut>
+        {!userId && (
+          <>
           <SignUpButton>
             <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-12 px-6 sm:px-8 hover:bg-[#5430d0] transition">
               Sign Up
@@ -40,17 +43,20 @@ export default function Home() {
               Sign In
             </button>
           </SignInButton>
-        </SignedOut>
+          </>
+        )}
 
         {/* Dashboard button for signed-in users */}
-        <SignedIn>
+        {userId && (
+          <>
           <Link href="/ai-course">
             <button className="bg-black text-white rounded-full font-medium text-sm sm:text-base h-12 px-6 sm:px-8 hover:bg-gray-900 transition">
               Dashboard
             </button>
           </Link>
           <UserButton />
-        </SignedIn>
+          </>
+        )}
       </div>
 
       {/* Footer / small note */}
