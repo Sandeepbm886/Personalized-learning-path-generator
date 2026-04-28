@@ -18,7 +18,7 @@ export default async function Home() {
       {/* Hero section */}
       <div className="text-center max-w-2xl space-y-6">
         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
-          Learn, Create, and Explore AI Courses
+          Learn, Create, and Explore AI Courses with Personalized learning path generator
         </h2>
         <p className="text-gray-600 text-lg sm:text-xl">
           Join thousands of learners and create your own AI-powered courses. 
