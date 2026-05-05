@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ai-Course Generation",
-  description: "Project by SPS",
+  title: "personalized Learning Path Generator",
+  description: "Project Group-8",
 };
 
 export default function RootLayout({ children }) {

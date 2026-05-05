@@ -41,3 +41,5 @@ yarn-error.log*
 next-env.d.ts
 .env*.local
 presentation-outline.md
+week1-ppt-content.md
+.gitignore
