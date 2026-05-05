@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "personalized Learning Path Generator",
+  title: "Personalized Learning Path Generator",
   description: "Project Group-8",
 };
 
