@@ -4,13 +4,13 @@ import Image from 'next/image';
 
 import { cn } from '../lib/utils';
 
-// interface HomeCardProps {
-//     className?: string;
-//     img: string;
-//     title: string;
-//     description: string;
-//     handleClick?: () => void;
-// }
+
+
+
+
+
+
+
 
 const HomeCard = ({ className, img, title, description, handleClick }) => {
     return (

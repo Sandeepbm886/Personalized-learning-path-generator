@@ -13,7 +13,7 @@ function TopicDescription() {
   }
   return (
     <div className='mx-20 lg:mx-44'>
-      {/* Input Topic*/}
+      
       <div>
         <label>Write the topic for which you want to create a course (e.g., Python Programming, Yoga, etc.):</label>
         <Input placeholder={'Enter topic'} className='h-14 text-xl mt-2'
@@ -27,7 +27,7 @@ function TopicDescription() {
           defaultValue={userCourseInput?.description} />
       </div>
 
-      {/* Text Area Desc*/}
+      
     </div>
   )
 }

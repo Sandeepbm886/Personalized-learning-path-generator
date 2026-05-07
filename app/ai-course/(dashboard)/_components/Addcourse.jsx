@@ -7,7 +7,7 @@ import { UserCourseListContext } from '../../_context/UserCourseListContext'
 
 function Addcourse() {
   const { userCourseList, setUserCourseList } = useContext(UserCourseListContext)
-  const [courseLimit, setCourseLimit] = useState(5); // default 5
+  const [courseLimit, setCourseLimit] = useState(5); 
   
       useEffect(() => {
           async function fetchCourseLimit() {

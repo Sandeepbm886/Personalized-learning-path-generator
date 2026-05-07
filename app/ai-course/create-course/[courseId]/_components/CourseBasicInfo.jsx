@@ -22,7 +22,7 @@ function CourseBasicInfo({ course, refreshData, edit = true }) {
           setImgUrl(data.urls.regular);
         }
       } catch (err) {
-        // fallback to placeholder if error
+        
         setImgUrl('/placeholder.png');
       }
     }

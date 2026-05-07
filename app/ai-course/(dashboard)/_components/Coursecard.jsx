@@ -27,7 +27,7 @@ function CourseCard({ course, refreshData, displayUser = false, explorePage }) {
         }
         
       } catch (err) {
-        // fallback to placeholder if error
+        
         setImgUrl('/placeholder.png');
       }
     }

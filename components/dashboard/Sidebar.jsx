@@ -204,7 +204,7 @@ export function Sidebar({ course, completedLessons = [] }) {
 
   return (
     <>
-      {/* Thin Mobile Sidebar */}
+      
       <aside className="fixed inset-y-0 left-0 z-50 flex flex-col items-center w-[60px] border-r bg-background lg:hidden py-4 gap-y-4">
         <TooltipProvider delayDuration={0}>
           <Tooltip>
@@ -243,7 +243,7 @@ export function Sidebar({ course, completedLessons = [] }) {
         </TooltipProvider>
       </aside>
 
-      {/* Main Sidebar - Desktop & Mobile */}
+      
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-40 bg-background transition-all duration-300 ease-in-out",
@@ -258,7 +258,7 @@ export function Sidebar({ course, completedLessons = [] }) {
         </div>
       </aside>
 
-      {/* Overlay for mobile */}
+      
       {isOpen && (
         <div
           className="fixed inset-0 z-30 bg-background/80 backdrop-blur-sm lg:hidden"

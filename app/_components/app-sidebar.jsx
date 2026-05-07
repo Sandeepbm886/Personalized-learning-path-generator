@@ -55,7 +55,7 @@ const items = [
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon" >
-            {/* HEADER */}
+            
             <SidebarHeader>
                 <SidebarMenuButton className="flex items-center gap-2">
                     <HeartOffIcon className="h-5 w-5 text-muted-foreground" />
@@ -66,7 +66,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
 
-            {/* CONTENT */}
+            
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -129,7 +129,7 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
 
-            {/* FOOTER */}
+            
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>

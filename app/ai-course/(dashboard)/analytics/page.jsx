@@ -26,17 +26,17 @@ export default function GlobalAnalyticsPage() {
         fetchUserData();
     }, [user]);
 
- // get logged-in user
+ 
 
     const fetchUserData = async () => {
         if (!user) return;
 
         try {
-            // fetch only courses created by this user
+            
             const userCourses = await db.select().from(CourseList)
                 .where(eq(CourseList.createdBy, user.primaryEmailAddress?.emailAddress));
 
-            // get all chapters belonging to these courses
+            
             const courseIds = userCourses.map(c => c.courseId);
             const userChapters = courseIds.length > 0
                 ? await db.select().from(Chapters)
@@ -50,7 +50,7 @@ export default function GlobalAnalyticsPage() {
         }
     };
 
-    // --- COMPUTED STATS ---
+    
     const totalCourses = courses.length;
     const totalChapters = chapters.length;
     const totalFinished = chapters.filter((ch) => ch.finished).length;
@@ -71,7 +71,7 @@ export default function GlobalAnalyticsPage() {
             )
             : 0;
 
-    // --- GROUP CHAPTERS BY COURSE ---
+    
     const chaptersByCourse = courses.map((course) => {
         const related = chapters.filter((ch) => ch.courseId === course.courseId);
         const finished = related.filter((c) => c.finished).length;
@@ -100,11 +100,11 @@ export default function GlobalAnalyticsPage() {
         };
     });
 
-    // --- UI ---
+    
     return (
         <div className="min-h-screen bg-white text-black p-6 md:p-10">
             <div className="max-w-7xl mx-auto space-y-10">
-                {/* Header */}
+                
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">
@@ -127,7 +127,7 @@ export default function GlobalAnalyticsPage() {
                     </div>
                 </div>
 
-                {/* Top Summary Cards */}
+                
                 <div className="grid gap-6 md:grid-cols-3">
                     <Card className="bg-gray-50 border border-gray-200">
                         <CardHeader>
@@ -162,7 +162,7 @@ export default function GlobalAnalyticsPage() {
 
                 <Separator className="bg-gray-200" />
 
-                {/* Per Course Performance */}
+                
                 <Card className="bg-white border border-gray-200 shadow-sm">
                     <CardHeader>
                         <CardTitle className="text-xl font-semibold">
@@ -200,7 +200,7 @@ export default function GlobalAnalyticsPage() {
                                             </div>
                                         </div>
 
-                                        {/* Progress bars */}
+                                        
                                         <div className="space-y-2 mt-3">
                                             <div>
                                                 <p className="text-xs text-gray-600 mb-1">

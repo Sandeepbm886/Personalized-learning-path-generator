@@ -16,7 +16,7 @@ import { IoMdAnalytics } from "react-icons/io";
 function Sidebar() {
     const { userCourseList, setUserCourseList } = useContext(UserCourseListContext)
     const path = usePathname()
-    const [courseLimit, setCourseLimit] = useState(5); // default 5
+    const [courseLimit, setCourseLimit] = useState(5); 
 
     useEffect(() => {
         async function fetchCourseLimit() {

@@ -27,13 +27,13 @@ export default async function Home() {
 />
 </div>
       
-      {/* Logo */}
+      
       <div className="mb-12 flex items-center gap-3">
         <Image src="/logo.svg" alt="Logo" width={50} height={50} />
         <h1 className="text-4xl sm:text-5xl font-bold text-white">Personalized learning path generator</h1>
       </div>
 
-      {/* Hero section */}
+      
       <div className="text-center max-w-2xl space-y-6">
         <h2 className="text-3xl sm:text-4xl font-semibold text-white">
           Learn, Create, and Explore AI Courses
@@ -44,10 +44,10 @@ export default async function Home() {
         </p>
       </div>
 
-      {/* Buttons */}
+      
       <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
         
-        {/* Sign Up */}
+        
       {!userId && (
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <SignUpButton><button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-12 px-6 sm:px-8 hover:bg-[#5430d0] transition">Sign Up</button></SignUpButton>
@@ -56,7 +56,7 @@ export default async function Home() {
         </div>
       )}
 
-        {/* Dashboard button for signed-in users */}
+        
         {userId && (
           <>
           <Link href="/ai-course">
@@ -69,7 +69,7 @@ export default async function Home() {
         )}
       </div>
 
-      {/* Footer / small note */}
+      
       <p className="mt-20 text-white text-sm sm:text-base text-center max-w-md">
         &copy; {new Date().getFullYear()} Personalized learning path generator. All rights reserved.
       </p>

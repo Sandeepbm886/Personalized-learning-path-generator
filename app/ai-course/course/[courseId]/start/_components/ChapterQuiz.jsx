@@ -5,7 +5,7 @@ import { Chapters } from "../../../../../../configs/schema";
 import { eq, and } from "drizzle-orm";
 
 export default function ChapterQuiz({ content = [], courseId, chapterId }) {
-    // Normalize content: keep only steps that have quiz arrays
+    
     const steps = useMemo(() => {
         return (content || [])
             .map((step, i) => ({
@@ -18,7 +18,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
 
     const totalSteps = steps.length;
 
-    // State
+    
     const [stepIndex, setStepIndex] = useState(0);
     const [qIndex, setQIndex] = useState(0);
     const [answersByStep, setAnswersByStep] = useState(
@@ -26,7 +26,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
     );
     const [reviewMode, setReviewMode] = useState(false);
 
-    // Reset state when steps change
+    
     useEffect(() => {
         setStepIndex(0);
         setQIndex(0);
@@ -36,7 +36,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
         setReviewMode(false);
     }, [steps]);
 
-    // No quizzes fallback
+    
     if (totalSteps === 0) {
         return (
             <div className="max-w-3xl mx-auto p-6 text-center">
@@ -48,7 +48,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
     const step = steps[stepIndex] || { quiz: [] };
     const question = step.quiz[qIndex] || { options: [], correct_index: null, question: "" };
 
-    // --- Update Quiz Marks in DB ---
+    
     async function updateQuizMarks(correct, total) {
         try {
             await db
@@ -65,7 +65,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
         }
     }
 
-    // --- Helpers ---
+    
     function handleSelect(optionIndex) {
         setAnswersByStep((prev) => {
             const copy = prev.map((arr) => arr.slice());
@@ -78,7 +78,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
         if (qIndex + 1 < step.quiz.length) {
             setQIndex((s) => s + 1);
         } else {
-            setQIndex(step.quiz.length); // step summary
+            setQIndex(step.quiz.length); 
         }
     }
 
@@ -125,16 +125,16 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
 
     const atStepSummary = qIndex >= step.quiz.length;
 
-    // Auto-update marks when final summary reached
+    
     useEffect(() => {
         if (stepIndex + 1 === totalSteps && atStepSummary) {
             const total = computeTotalScore();
             updateQuizMarks(total.correct, total.total);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        
     }, [stepIndex, atStepSummary]);
 
-    // --- REVIEW MODE ---
+    
     if (reviewMode) {
         return (
             <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-sm">
@@ -177,7 +177,7 @@ export default function ChapterQuiz({ content = [], courseId, chapterId }) {
         );
     }
 
-    // --- QUIZ UI ---
+    
     return (
         <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-sm">
             <header className="mb-4">

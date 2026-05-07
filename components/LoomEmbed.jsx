@@ -3,7 +3,7 @@
 
 
 export function LoomEmbed({ shareUrl }) {
-  // Convert share URL to embed URL
+  
   const embedUrl = shareUrl.replace("/share/", "/embed/").split("?")[0];
 
   return (

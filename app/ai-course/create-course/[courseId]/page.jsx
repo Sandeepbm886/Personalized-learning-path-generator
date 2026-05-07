@@ -63,7 +63,7 @@ function CourseLayout({ params }) {
                       `;
 
       try {
-        // Generate video url
+        
         let videoId = '';
         getVideos(course?.courseOutput?.["Topic"] + ':' + chapter?.["Chapter Name"]).then(resp => {
           console.log(resp);
@@ -72,7 +72,7 @@ function CourseLayout({ params }) {
         const result = await GenerateCourseContent(PROMPT);
         console.log(JSON.parse(result));
 
-        //Save Chapter content + videoId to database
+        
         await db.insert(Chapters).values({
           courseId: course?.courseId,
           chapterId: index,
@@ -96,11 +96,11 @@ function CourseLayout({ params }) {
     <div className='mt-10 px-7 md:px-20 lg:px-44'>
       <h2 className='font-bold text-center text-2xl'>Course Layout</h2>
       <Loader loading={loading} />
-      {/* basic info */}
+      
       <CourseBasicInfo course={course} refreshData={() => GetCourse()} />
-      {/* Course detail */}
+      
       <CourseDetail course={course} />
-      {/* list of lession */}
+      
       <ChapterList course={course} refreshData={() => GetCourse()} />
 
       <Button onClick={GenerateChapterContent} className="my-10">Generate Course Content</Button>

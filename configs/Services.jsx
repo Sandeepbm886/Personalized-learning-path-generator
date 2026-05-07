@@ -39,7 +39,7 @@ const getVideos = async (query) => {
     const videosResponse = await axios.get(YOUTUBE_VIDEOS_URL, { params: videosParams });
     const videoDetails = videosResponse.data.items;
 
-    // Filter for long-form videos (exclude shorts: duration > 60 seconds)
+    
     const longFormVideos = videoDetails.filter(video => {
         const durationSeconds = isoDurationToSeconds(video.contentDetails.duration);
         return durationSeconds > 60;
@@ -47,14 +47,14 @@ const getVideos = async (query) => {
 
     if (longFormVideos.length === 0) return [];
 
-    // Sort by viewCount descending 
+    
     longFormVideos.sort((a, b) => {
         const viewsA = parseInt(a.statistics.viewCount || 0);
         const viewsB = parseInt(b.statistics.viewCount || 0);
         return viewsB - viewsA;
     });
 
-    // Get the top video's ID and find the corresponding snippet from search results
+    
     const topVideo = longFormVideos[0];
     const topItem = items.find(item => item.id.videoId === topVideo.id);
 

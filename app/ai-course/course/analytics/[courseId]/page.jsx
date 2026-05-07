@@ -46,7 +46,7 @@ export default function AnalyticsPage({ params }) {
         setChapters(chapterRes);
     };
 
-    // Compute overall stats
+    
     const totalChapters = chapters.length;
     const completedChapters = chapters.filter((ch) => ch.finished).length;
     const averageScore =
@@ -59,7 +59,7 @@ export default function AnalyticsPage({ params }) {
     return (
         <div className="min-h-screen bg-white text-black p-6 md:p-10">
             <div className="max-w-6xl mx-auto space-y-10">
-                {/* Header */}
+                
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">
@@ -83,7 +83,7 @@ export default function AnalyticsPage({ params }) {
                     </div>
                 </div>
 
-                {/* Overview Cards */}
+                
                 <div className="grid gap-6 md:grid-cols-3">
                     <Card className="bg-gray-50 border border-gray-200">
                         <CardHeader>
@@ -142,7 +142,7 @@ export default function AnalyticsPage({ params }) {
 
                 <Separator className="bg-gray-200" />
 
-                {/* Detailed Chapter Breakdown */}
+                
                 <Card className="bg-white border border-gray-200 shadow-sm">
                     <CardHeader>
                         <CardTitle className="text-xl font-semibold">

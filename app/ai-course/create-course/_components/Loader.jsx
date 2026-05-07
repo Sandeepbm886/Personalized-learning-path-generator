@@ -5,7 +5,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "../../../../components/ui/alert-dialog"
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden' // install if needed
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden' 
 import Image from 'next/image'
 
 function Loader({ loading }) {

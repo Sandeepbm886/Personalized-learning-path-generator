@@ -48,7 +48,7 @@ function CourseStart({ params }) {
 
         const nextIndex = currentIndex + 1;
 
-        // ✅ Case 1: If there is another CHAPTER
+        
         if (nextIndex < chapters.length) {
             const nextChapter = chapters[nextIndex];
             setSelectedChapter(nextChapter);
@@ -58,9 +58,9 @@ function CourseStart({ params }) {
             return;
         }
 
-        // ✅ Case 2: If all chapters done → show QUIZ
+        
         if (nextIndex === chapters.length) {
-            const quizIndex = chapters.length - 1; // same quiz index as sidebar uses
+            const quizIndex = chapters.length - 1; 
             setselectedIndex(`quiz-${quizIndex}`);
             setSelectedChapter(null);
             setQuizMode(true);

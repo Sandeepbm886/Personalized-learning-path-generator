@@ -25,7 +25,7 @@ export default function PaymentCard({ title, description, amount, onPay,imgurl }
                 </h2>
                 <p className="text-sm text-gray-400 my-1">{description}</p>
 
-                {/* Big Amount */}
+                
                 <div className="text-2xl font-semibold text-primary mt-2 mb-3">
                     ₹{amount}
                 </div>

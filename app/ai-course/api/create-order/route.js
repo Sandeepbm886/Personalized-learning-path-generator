@@ -8,14 +8,14 @@ const razorpay = new Razorpay({
 
 export async function POST(request) {
     try {
-        const { amount } = await request.json(); // ✅ Get dynamic amount from frontend
+        const { amount } = await request.json(); 
 
         if (!amount || amount <= 0) {
             return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
         }
 
         const order = await razorpay.orders.create({
-            amount: amount * 100, // Razorpay requires paise
+            amount: amount * 100, 
             currency: "INR",
             receipt: "receipt_" + Math.random().toString(36).substring(7),
         });

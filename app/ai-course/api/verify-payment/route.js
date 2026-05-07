@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { db } from "../../../../configs/db";
 import { Users } from "../../../../configs/schema";
+import { sql } from "drizzle-orm";
 
 import { getAuth } from "@clerk/nextjs/server";
 export async function POST(request) {
@@ -23,7 +24,7 @@ export async function POST(request) {
             amount,
         } = await request.json();
 
-        // Razorpay signature validation
+        
         const generated_signature = crypto
             .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
             .update(`${razorpay_order_id}|${razorpay_payment_id}`)
@@ -33,19 +34,27 @@ export async function POST(request) {
             return NextResponse.json({ success: false }, { status: 400 });
         }
 
-        // ✅ Plan logic (SET NEW LIMIT)
-        let newLimit = 5;
-        if (amount == 100) newLimit = 10;
-        else if (amount == 399) newLimit = 25;
-        else if (amount == 999) newLimit = 50;
+        
+        
+        let purchasedCredits = 0;
+        if (amount == 100) purchasedCredits = 10;
+        else if (amount == 399) purchasedCredits = 25;
+        else if (amount == 999) purchasedCredits = 50;
 
-        // ✅ Insert user if not exist
+        if (!purchasedCredits) {
+            return NextResponse.json({
+                success: false,
+                error: "Invalid plan amount"
+            }, { status: 400 });
+        }
+
+        
         await db
             .insert(Users)
-            .values({ clerkUserId: userId, courseLimit: newLimit })
+            .values({ clerkUserId: userId, courseLimit: 5 + purchasedCredits })
             .onConflictDoUpdate({
                 target: Users.clerkUserId,
-                set: { courseLimit: newLimit },
+                set: { courseLimit: sql`${Users.courseLimit} + ${purchasedCredits}` },
             });
 
         return NextResponse.json({ success: true }, { status: 200 });
