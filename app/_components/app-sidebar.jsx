@@ -143,7 +143,7 @@ export function AppSidebar() {
                             <DropdownMenuContent
                                 side="top"
                                 align="center"
-                                className="w-full min-w-[180px] bg-sidebar p-1 shadow-lg border border-border"
+                                className="w-full min-w-45 bg-sidebar p-1 shadow-lg border border-border"
                             >
                                 <DropdownMenuItem className="w-full justify-start">
                                     <span>Account</span>
